@@ -1,0 +1,27 @@
+version: "3.7"
+
+services:
+  flaskapp:
+    build:
+      context: ./
+    ports:
+      - "5000:5000"
+
+  db:
+    image: mysql:8.0.19
+    volumes:
+      - ./dbdata:/docker-entrypoint-initdb.d
+    restart: always
+    environment:
+      MYSQL_USER: luisced02301
+      MYSQL_PASSWORD: Lu2504765#
+      MYSQL_DATABASE: NFT-APP
+      MYSQL_ROOT_PASSWORD: Lu2504765#
+    ports:
+      - 1433:1433
+
+  adminer:
+    image: adminer:latest
+    restart: always
+    ports:
+      - 8080:8080
