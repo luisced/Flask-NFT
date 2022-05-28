@@ -1,12 +1,11 @@
 version: "3.7"
 
 services:
-  flaskapp:
-    build:
-      context: ./
+  web:
+    build: ./App/web
     ports:
-      - "5000:5000"
-
+      - "5555:5555"
+    volumes: ["./App/web:/app"]
   db:
     image: mysql:8.0.19
     volumes:
